@@ -1,11 +1,10 @@
-package com.letsvote;
+package com.letsvote.ui.activities;
 
 import android.content.res.Configuration;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -18,8 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.letsvote.R;
+
 import Base.BaseActivity;
-import adapters.DrawerList_Adapter;
+import com.letsvote.ui.adapters.DrawerList_Adapter;
 
 public class DrawerMainActivity extends BaseActivity {
     ActionBarDrawerToggle mDrawerToggle;
@@ -48,12 +49,12 @@ public class DrawerMainActivity extends BaseActivity {
         makeFragmentSelection(0);
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_drawer_main, menu);
         return true;
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
