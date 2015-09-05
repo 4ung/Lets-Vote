@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="main_color">#009191</color>
-    <color name="main_color_dark">#009191</color>
-    <color name="light_primary_color">#D1C4E9</color>
-    <color name="assent">#FF4081</color>
-    <color name="main_assent">#009191</color>
-    <color name="transparent">#00FFFFFF</color>
-    <color name="main_teal">#009191</color>
-    <color name="main_white">#FFF</color>
-    <color name="main_dark_orange">#ffe18c1c</color>
-    <color name="main_orange_light">#ffffa01c</color>
-    <color name="main_gray">#9c9c9c</color>
-    <color name="card_bg">#ffefefef</color>
-    <color name="main_text_color">#212121</color>
-    <color name="secondary_text_color">#727272</color>
-    <color name="main_red">#F44336</color>
-    <color name="sec_text_color">#727272</color>
 
+    <string name="app_name">Lets Vote</string>
+    <string name="open_drawer">open</string>
+    <string name="close_drawer">close</string>
 
 
 
