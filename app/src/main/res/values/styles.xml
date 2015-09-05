@@ -1,8 +1,64 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorPrimaryDark">@color/main_color_dark</item>
+        <item name="colorAccent">@color/main_assent</item>
+        <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
+
     </style>
+
+
+
+
+    <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorPrimaryDark">@color/main_color_dark</item>
+        <item name="colorAccent">@color/main_assent</item>
+
+    </style>
+    <style name="Toolbar" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorPrimaryDark">@color/main_color_dark</item>
+        <item name="colorAccent">@color/main_assent</item>
+    </style>
+    <style name="TransparentToolbar" parent="Theme.AppCompat">
+        <item name="colorPrimary">#00ffffff</item>
+        <item name="colorPrimaryDark">#00ffffff</item>
+        <item name="colorAccent">@color/main_assent</item>
+    </style>
+
+    <style name="AppTheme.Widget"/>
+    <style name="AppTheme.Widget.TextView" parent="android:Widget.TextView">
+        <item name="fontPath" >fonts/notosans_R.ttf</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Style">
+        <item name="fontPath" >fonts/notosans_R.ttf</item>
+
+    </style>
+
+    <style name="ToolbarCustomIconColor" parent="AppTheme">
+        <!-- android:textColorSecondary is used for coloring the navigation drawer icon and up arrow. -->
+        <item name="android:textColorSecondary">@color/main_white</item><!--FF0000  b90606 -->
+    </style>
+
+    <style name="ContactEditText" parent="Material.Widget.EditText.Light">
+        <item name="cet_spanHeight">32dp</item>
+        <item name="cet_spanMaxWidth">150dp</item>
+        <item name="cet_spanPaddingLeft">8dp</item>
+        <item name="cet_spanPaddingRight">12dp</item>
+        <item name="cet_spanTextSize">14sp</item>
+        <item name="cet_spanTextColor">@color/abc_primary_text_material_light</item>
+        <item name="cet_spanBackgroundColor">#FFE0E0E0</item>
+        <item name="cet_spanSpacing">4dp</item>
+    </style>
+
+
+
+
+    //Material Library styles
 
 </resources>
