@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,10 +17,18 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.letsvote.R;
 
 import Base.BaseActivity;
+import api.APIConfig;
+import api.RetrofitAPI;
+import api.RetrofitInterface;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
 import com.letsvote.ui.adapters.DrawerList_Adapter;
 
 public class DrawerMainActivity extends BaseActivity {
@@ -47,6 +56,18 @@ public class DrawerMainActivity extends BaseActivity {
         binddataTOList();
 
         makeFragmentSelection(0);
+
+        RetrofitAPI.getInstance(getApplication()).getService().getToken(APIConfig.api_key, new Callback<String>() {
+            @Override
+            public void success(String s, Response response) {
+                Log.w("TOKEN",s.toString());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                error.printStackTrace();
+            }
+        });
     }
 
     /*@Override

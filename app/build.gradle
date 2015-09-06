@@ -30,6 +30,8 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.3.0'
     compile 'com.squareup.okhttp:okhttp:2.3.0'
 
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.1'
+
     compile project(':libraryMaterialDialogs')
     compile project(':libMaterialFramework')
 }
