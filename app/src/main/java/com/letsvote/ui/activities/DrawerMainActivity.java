@@ -19,6 +19,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.letsvote.R;
 
 import Base.BaseActivity;
@@ -31,6 +33,10 @@ import retrofit.client.Response;
 
 import com.letsvote.ui.adapters.DrawerList_Adapter;
 
+
+
+import java.io.IOException;
+
 public class DrawerMainActivity extends BaseActivity {
     ActionBarDrawerToggle mDrawerToggle;
     LinearLayout mDrawerListLayout;
@@ -40,6 +46,8 @@ public class DrawerMainActivity extends BaseActivity {
     Toolbar toolbar;
     String[] DrawerMenuList;
     int[] DrawerIcons;
+
+    static ObjectMapper mapper=new ObjectMapper();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +68,7 @@ public class DrawerMainActivity extends BaseActivity {
         RetrofitAPI.getInstance(getApplication()).getService().getToken(APIConfig.api_key, new Callback<String>() {
             @Override
             public void success(String s, Response response) {
-                Log.w("TOKEN",s.toString());
+                parsejson(s);
             }
 
             @Override
@@ -70,12 +78,16 @@ public class DrawerMainActivity extends BaseActivity {
         });
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_drawer_main, menu);
-        return true;
-    }*/
+    void parsejson(String s){
+        Object obj = null;
+        try {
+            obj = mapper.readValue(s, Object.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.w("OBJECT","obj type: " + obj.getClass().toString()); // java.util.LinkedHashMap
+        Log.w("OBJECT","obj: " + obj);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
