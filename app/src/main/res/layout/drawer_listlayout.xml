@@ -15,7 +15,7 @@
         <RelativeLayout
             android:id="@+id/ly1"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@color/main_color"
@@ -81,13 +81,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <TextView
+               <!-- <TextView
                     android:background="@android:color/darker_gray"
                     android:layout_width="fill_parent"
                     android:height="2sp"
                     android:layout_height="wrap_content">
 
-                </TextView>
+                </TextView>-->
                 <ListView
                     android:id="@+id/left_drawer_lv"
                     android:layout_width="match_parent"
