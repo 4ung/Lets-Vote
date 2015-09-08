@@ -10,9 +10,6 @@
 
     </style>
 
-
-
-
     <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/main_color</item>
         <item name="colorPrimaryDark">@color/main_color_dark</item>
@@ -43,6 +40,7 @@
     <style name="ToolbarCustomIconColor" parent="AppTheme">
         <!-- android:textColorSecondary is used for coloring the navigation drawer icon and up arrow. -->
         <item name="android:textColorSecondary">@color/main_white</item><!--FF0000  b90606 -->
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
     <style name="ContactEditText" parent="Material.Widget.EditText.Light">
@@ -56,9 +54,31 @@
         <item name="cet_spanSpacing">4dp</item>
     </style>
 
-
-
-
     //Material Library styles
 
+    <style name="CardPrimaryTitleStyle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Headline</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+    </style>
+
+    <style name="CardLogoImageStyle">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+    </style>
+
+    <style name="CardButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">88dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:background">@drawable/card_button_background_selector</item>
+        <item name="android:textColor">#e91e63</item>
+    </style>
 </resources>

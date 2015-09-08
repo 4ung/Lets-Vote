@@ -1,12 +1,11 @@
 package com.letsvote;
 
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +16,10 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.letsvote.ui.CandidateListFragment;
+import com.letsvote.ui.PartyListFragment;
+import com.letsvote.ui.PotentialFragment;
 
 import Base.BaseActivity;
 import adapters.DrawerList_Adapter;
@@ -114,16 +117,16 @@ public class DrawerMainActivity extends BaseActivity {
         switch (position){
             case 0:
                 toolbar.setTitle(DrawerMenuList[position]);
-                //fragmentManager.beginTransaction().replace(R.id.content_frame, new Fragment_Diy_container()).commit();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, new PotentialFragment()).commit();
                 break;
             case 1:
                 toolbar.setTitle(DrawerMenuList[position]);
-                // fragmentManager.beginTransaction().replace(R.id.content_frame, new Fragment_setting()).commit();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, new PartyListFragment()).commit();
                 break;
             case 2:
                 //Do action here
                 toolbar.setTitle(DrawerMenuList[position]);
-                //fragmentManager.beginTransaction().replace(R.id.content_frame, new Fragment_vocablist()).commit();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, new CandidateListFragment()).commit();
                 break;
             case 3:
                 //Do action here
@@ -143,9 +146,10 @@ public class DrawerMainActivity extends BaseActivity {
     }
 
     void binddataTOList(){
-        DrawerMenuList=new String[]{"Candidates","Parties","FAQs", "Geolocations","About"};
+
+        DrawerMenuList= getResources().getStringArray(R.array.nav_drawer_items);// new String[]{"Candidates","Parties","FAQs", "Geolocations","About"};
         //DrawerIcons=new int[]{R.drawable.ic_calendar, R.drawable.ic_setting,R.drawable.ic_info};
-        DrawerIcons=new int[]{1,2,3,4,5};
+        DrawerIcons= getResources().getIntArray(R.array.nav_drawer_icons);//new int[]{1,2,3,4,5};
         DrawerList_Adapter drawerList_adapter=new DrawerList_Adapter(this,DrawerMenuList,DrawerIcons);
         drawerList_adapter.notifyDataSetChanged();
         mDrawerList.setAdapter(drawerList_adapter);

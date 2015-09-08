@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    android:orientation="vertical"
+<LinearLayout
     android:id="@+id/left_drawer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:clickable="true">
-    android:layout_height="match_parent">
+    android:clickable="true"
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main_white">
+
         <RelativeLayout
             android:id="@+id/ly1"
             android:layout_width="match_parent"
@@ -24,47 +25,47 @@
             android:paddingTop="16dp">
 
             <RelativeLayout
+                android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="right|top"
-                android:layout_centerVertical="true"
-                android:id="@+id/relativeLayout"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentStart="true"
+                android:visibility="invisible"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right|top">
 
                 <FrameLayout
+                    android:id="@+id/profile_imgView"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-
-                    android:id="@+id/profile_imgView"
-                    android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true">
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
 
                     <TextView
+                        android:id="@+id/profile_text"
+                        fontPath="fonts/Padauk.ttf"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="V"
-                        fontPath="fonts/Padauk.ttf"
-                        android:id="@+id/profile_text"
-                        android:textColor="@color/main_white"
-                        android:textSize="50sp"
-                        android:layout_gravity="center"
+                        android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true" />
+                        android:layout_gravity="center"
+                        android:text="V"
+                        android:textColor="@color/main_white"
+                        android:textSize="50sp"/>
                 </FrameLayout>
 
                 <TextView
                     android:layout_width="300dp "
-                    android:text="Lets Vote"
-                    android:gravity="left"
-                    android:textSize="20sp"
-
-                    android:textColor="@color/main_white"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/profile_imgView"
+
                     android:layout_toRightOf="@+id/profile_imgView"
-                    android:layout_toEndOf="@+id/profile_imgView" />
+                    android:gravity="left"
+                    android:text="Lets Vote"
+                    android:textColor="@color/main_white"
+                    android:textSize="20sp"/>
 
             </RelativeLayout>
 
@@ -81,13 +82,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
-                    android:background="@android:color/darker_gray"
                     android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
                     android:height="2sp"
-                    android:layout_height="wrap_content">
+                    android:background="@android:color/darker_gray">
 
                 </TextView>
+
                 <ListView
                     android:id="@+id/left_drawer_lv"
                     android:layout_width="match_parent"
@@ -95,26 +98,28 @@
                     android:layout_gravity="start"
                     android:choiceMode="singleChoice"
 
-                    android:paddingTop="8dp"
                     android:divider="@android:color/transparent"
-                    android:dividerHeight="0dp" />
+                    android:dividerHeight="0dp"
+                    android:paddingTop="8dp"/>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom">
+
                     <LinearLayout
                         android:layout_width="match_parent"
 
+                        android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
-                        android:orientation="vertical"
-                        android:layout_height="wrap_content">
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:textColor="@color/main_gray"
-                            android:text=""
+                            android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:layout_height="wrap_content" />
+                            android:text=""
+                            android:textColor="@color/main_gray"/>
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>

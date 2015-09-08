@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.PolicyActivity"
+            android:label="@string/title_activity_policy"
+            android:parentActivityName=".DrawerMainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.letsvote.DrawerMainActivity" />
+        </activity>
     </application>
 
 </manifest>
