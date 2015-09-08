@@ -1,14 +1,13 @@
-package com.letsvote;
+package com.letsvote.ui.activities;
 
 import android.content.res.Configuration;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,23 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import Base.BaseActivity;
-import adapters.DrawerList_Adapter;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.letsvote.R;
+
+import com.letsvote.Base.BaseActivity;
+import com.letsvote.api.APIConfig;
+import com.letsvote.api.RetrofitAPI;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
+import com.letsvote.ui.adapters.DrawerList_Adapter;
+
+
+
+import java.io.IOException;
 
 public class DrawerMainActivity extends BaseActivity {
     ActionBarDrawerToggle mDrawerToggle;
@@ -30,6 +44,8 @@ public class DrawerMainActivity extends BaseActivity {
     Toolbar toolbar;
     String[] DrawerMenuList;
     int[] DrawerIcons;
+
+    static ObjectMapper mapper=new ObjectMapper();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +62,29 @@ public class DrawerMainActivity extends BaseActivity {
         binddataTOList();
 
         makeFragmentSelection(0);
+
+        RetrofitAPI.getInstance(getApplication()).getService().getToken(APIConfig.api_key, new Callback<String>() {
+            @Override
+            public void success(String s, Response response) {
+                parsejson(s);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                error.printStackTrace();
+            }
+        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_drawer_main, menu);
-        return true;
+    void parsejson(String s){
+        Object obj = null;
+        try {
+            obj = mapper.readValue(s, Object.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.w("OBJECT","obj type: " + obj.getClass().toString()); // java.util.LinkedHashMap
+        Log.w("OBJECT","obj: " + obj);
     }
 
     @Override
