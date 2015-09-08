@@ -8,7 +8,13 @@
       </configuration>
     </facet>
   </component>
+<<<<<<< HEAD:Lets-Vote.iml
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="true">
+    <output url="file://$MODULE_DIR$/build" />
+    <output-test url="file://$MODULE_DIR$/build" />
+=======
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+>>>>>>> 66f5bff2443ccea7de62eeef0782b4eb2e855128:Lets-Vote.iml
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />

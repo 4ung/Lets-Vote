@@ -1,4 +1,4 @@
-package com.letsvote.ui;
+package com.letsvote.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.letsvote.R;
-import com.letsvote.ui.adapter.PartyListAdapter;
+import com.letsvote.ui.activities.PartyDetailsActivity;
+import com.letsvote.ui.activities.PolicyActivity;
+import com.letsvote.ui.adapters.PartyListAdapter;
 
 import java.util.ArrayList;
 
@@ -58,7 +60,9 @@ public class PartyListFragment extends Fragment {
         mPartyListAdapter = new PartyListAdapter(getActivity(), new PartyListAdapter.PartyAdapterOnClickHandler() {
             @Override
             public void onClick(String partyId, PartyListAdapter.PartyAdapterViewHolder vh) {
-                Toast.makeText(getActivity(), "PartyId: " + partyId, Toast.LENGTH_SHORT).show();
+                Intent policyIntent = new Intent(getActivity(), PartyDetailsActivity.class)
+                        .putExtra(PartyDetailsFragment.EXTRA_PARTY_ID, partyId);
+                startActivity(policyIntent);
             }
 
             @Override
@@ -72,16 +76,6 @@ public class PartyListFragment extends Fragment {
             public void onContactClick(String partyId, PartyListAdapter.PartyAdapterViewHolder vh) {
                 Toast.makeText(getActivity(), "Contact" + partyId, Toast.LENGTH_SHORT).show();
             }
-//            @Override
-//            public void onClick(Long date, ForecastAdapter.ForecastAdapterViewHolder vh) {
-//                String locationSetting = Utility.getPreferredLocation(getActivity());
-//                ((Callback) getActivity())
-//                        .onItemSelected(WeatherContract.WeatherEntry.buildWeatherLocationWithDate(
-//                                        locationSetting, date),
-//                                vh
-//                        );
-//            }
-//        }, );
         }, dataSet);
 
         // specify an adapter (see also next example)

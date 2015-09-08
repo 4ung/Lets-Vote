@@ -1,4 +1,4 @@
-package com.letsvote.ui;
+package com.letsvote.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,15 +9,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.letsvote.R;
+import com.letsvote.ui.fragment.PartyDetailsFragment;
 
-public class PolicyActivity extends AppCompatActivity {
+public class PartyDetailsActivity extends AppCompatActivity {
 
-    CollapsingToolbarLayout collapsingToolbarLayout;
+    private CollapsingToolbarLayout mCollapsingToolbarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_policy);
+        setContentView(R.layout.activity_party_details);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         if (toolbar != null) {
@@ -27,23 +29,23 @@ public class PolicyActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             Intent intent = getIntent();
-            if (intent.hasExtra(PolicyFragment.EXTRA_PARTY_ID)) {
-                String partyId = intent.getStringExtra(PolicyFragment.EXTRA_PARTY_ID);
+            if (intent.hasExtra(PartyDetailsFragment.EXTRA_PARTY_ID)) {
+                String partyId = intent.getStringExtra(PartyDetailsFragment.EXTRA_PARTY_ID);
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.content_frame, PolicyFragment.newInstance(partyId))
+                        .add(R.id.content_frame, PartyDetailsFragment.newInstance(partyId))
                         .commit();
             }
         }
 
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
-        collapsingToolbarLayout.setTitle("Policies - Party#");
+        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsingToolbarLayout);
+        mCollapsingToolbarLayout.setTitle("The 88 Generation Student Youths  (Union of Myanmar)");
     }
 
 
-    @Override
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_policy, menu);
+        getMenuInflater().inflate(R.menu.menu_party_details, menu);
         return true;
     }
 

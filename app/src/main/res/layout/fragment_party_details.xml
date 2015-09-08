@@ -1,0 +1,170 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              tools:context="com.letsvote.ui.fragment.PartyDetailsFragment">
+
+    <TextView
+        style="@style/DetailsLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Party Name"/>
+
+    <TextView
+        style="@style/DetailsValueBoldStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="La Hu National Development Party"/>
+
+    <TextView
+        style="@style/DetailsValueStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(LHDP)"/>
+
+    <include layout="@layout/layout_small_space_party_details"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DetailsLabelStyle"
+                android:text="Leadership"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DetailsValueStyle"
+                android:text="U Ye' Tun\nU Khen Yan"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DetailsLabelStyle"
+                android:text="Chairman"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/DetailsValueStyle"
+                android:text="U Ye' Tun\nU Khen Yan"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_small_space_party_details"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/DetailsLabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Establishment Date"/>
+
+            <TextView
+                style="@style/DetailsValueStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="29 April 2010"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/DetailsLabelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Member Count"/>
+
+            <TextView
+                style="@style/DetailsValueStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="27"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_small_space_party_details"/>
+
+    <TextView
+        style="@style/DetailsLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Region"/>
+
+    <TextView
+        style="@style/DetailsValueStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="In Shan State"/>
+
+    <include layout="@layout/layout_small_space_party_details"/>
+
+    <TextView
+        style="@style/DetailsLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"/>
+
+    <TextView
+        style="@style/DetailsValueStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No.18, North Street, TaungGyi, Shen State"/>
+
+    <include layout="@layout/layout_small_space_party_details"/>
+
+    <TextView
+        style="@style/DetailsLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact"/>
+
+    <TextView
+        style="@style/DetailsValueStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09-12345678, 01-123456, 067-47895633"/>
+
+</LinearLayout>

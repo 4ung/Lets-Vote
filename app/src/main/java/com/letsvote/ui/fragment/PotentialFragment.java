@@ -1,4 +1,4 @@
-package com.letsvote.ui;
+package com.letsvote.ui.fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
