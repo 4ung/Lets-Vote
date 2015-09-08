@@ -113,6 +113,7 @@ public class GeoItem {
         this.geometry = geometry;
     }
 
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
