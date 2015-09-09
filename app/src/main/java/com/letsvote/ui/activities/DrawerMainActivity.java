@@ -1,5 +1,6 @@
 package com.letsvote.ui.activities;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -33,6 +34,8 @@ import com.letsvote.api.RetrofitAPI;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import com.letsvote.ui.adapters.DrawerList_Adapter;
 import com.letsvote.utility.MySharedPreference;
@@ -61,6 +64,11 @@ public class DrawerMainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                        .setDefaultFontPath("fonts/Padauk.ttf")
+                        .setFontAttrId(R.attr.fontPath)
+                        .build()
+        );
         setContentView(R.layout.activity_drawer_main);
 
         mDrawerList = (ListView) findViewById(R.id.left_drawer_lv);
@@ -180,6 +188,11 @@ public class DrawerMainActivity extends BaseActivity {
 
 
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     void GetTokens(String s) {
