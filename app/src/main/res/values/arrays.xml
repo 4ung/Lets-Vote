@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--TODO:// fix string items-->
+    <string-array name="nav_drawer_items">
+        <item>Potential</item>
+        <item>Party List</item>
+        <item>Candidate List</item>
+        <item>Something</item>
+        <item>FAQ</item>
+        <item>About Us</item>
+    </string-array>
+    <integer-array name="nav_drawer_icons">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
+    <string-array name="potential_tabs">
+        <item>Party</item>
+        <item>Candidate</item>
+    </string-array>
+</resources>
