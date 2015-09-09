@@ -28,7 +28,7 @@ public interface RetrofitInterface {
 
 
 
-    @POST(APIConfig.PARTY_BY_ID)
+    @GET(APIConfig.PARTY_BY_ID)
     void getPartyById(@Query("token") String fat,@Path("party_id") String partyid,
                                         Callback<String> callback);
 

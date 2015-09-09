@@ -69,65 +69,106 @@ public class DrawerMainActivity extends BaseActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.menu_drawer_main);
 
-        RetrofitAPI.getInstance(getApplication()).getService().getToken(APIConfig.api_key, new Callback<String>() {
-            @Override
-            public void success(String s, Response response) {
-                parsejson(s);
-                Log.e("TOKEN", MySharedPreference.getInstance(DrawerMainActivity.this).getStringPreference(PreferenceConfig.TOKEN, ""));
-            }
 
-            @Override
-            public void failure(RetrofitError error) {
-                error.printStackTrace();
-            }
-        });
+        if(MySharedPreference.getInstance(DrawerMainActivity.this).getStringPreference(PreferenceConfig.TOKEN, "").equals("")){
+            RetrofitAPI.getInstance(getApplication()).getService().getToken(APIConfig.api_key, new Callback<String>() {
+                @Override
+                public void success(String s, Response response) {
+                    GetTokens(s);
+                    Log.e("TOKEN", MySharedPreference.getInstance(DrawerMainActivity.this).getStringPreference(PreferenceConfig.TOKEN, ""));
+                }
 
-        String token=MySharedPreference.getInstance(DrawerMainActivity.this).getStringPreference(PreferenceConfig.TOKEN, "");
-        RetrofitAPI.getInstance(getApplication()).getService().getPartylist(token, new Callback<String>() {
-            @Override
-            public void success(String s, Response response) {
+                @Override
+                public void failure(RetrofitError error) {
+                    error.printStackTrace();
+                }
+            });
+        }else{
+            String token=MySharedPreference.getInstance(DrawerMainActivity.this).getStringPreference(PreferenceConfig.TOKEN, "");
+           /* RetrofitAPI.getInstance(getApplication()).getService().getPartylist(token, new Callback<String>() {
+                @Override
+                public void success(String s, Response response) {
 
-                if(!s.equals("")){
-                    Object obj = null;
-                    List<PartyItem> PartyItemList=new ArrayList<PartyItem>();
-                    try {
-                        JSONObject listobj=new JSONObject(s);
+                    if(!s.equals("")){
+                        Object obj = null;
+                        List<PartyItem> PartyItemList=new ArrayList<PartyItem>();
+                        try {
+                            JSONObject listobj=new JSONObject(s);
 
-                        if(!listobj.isNull("data")){
-                            JSONArray listArry=listobj.getJSONArray("data");
+                            if(!listobj.isNull("data")){
+                                JSONArray listArry=listobj.getJSONArray("data");
 
-                            int i=0;
-                            while(i<listArry.length()){
-                                ObjectMapper mapper=new ObjectMapper();
-                                PartyItem partyItem=new PartyItem();
+                                int i=0;
+                                while(i<listArry.length()){
+                                    ObjectMapper mapper=new ObjectMapper();
+                                    PartyItem partyItem=new PartyItem();
 
-                                try {
-                                    obj=mapper.readValue(listArry.getString(i), PartyItem.class);
-                                    partyItem=(PartyItem)obj;
-                                    PartyItemList.add(partyItem);
+                                    try {
+                                        obj=mapper.readValue(listArry.getString(i), PartyItem.class);
+                                        partyItem=(PartyItem)obj;
+                                        PartyItemList.add(partyItem);
 
-                                } catch (IOException e) {
-                                    e.printStackTrace();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    i++;
                                 }
 
-                                i++;
+                                Log.e("PARTY_LIST","COMPLETED");
                             }
-
-                            Log.e("PARTY_LIST","COMPLETED");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+
                     }
 
                 }
 
-            }
+                @Override
+                public void failure(RetrofitError error) {
+                    error.printStackTrace();
+                }
+            });*/
 
-            @Override
-            public void failure(RetrofitError error) {
-                error.printStackTrace();
-            }
-        });
+            RetrofitAPI.getInstance(getApplication()).getService().getPartyById(token, "55d453165bf73049038b4567", new Callback<String>() {
+                @Override
+                public void success(String s, Response response) {
+
+                    if (!s.equals("")) {
+                        Object obj = null;
+                        try {
+                            JSONObject jsonObject = new JSONObject(s);
+                            if (!jsonObject.isNull("data")) {
+                                ObjectMapper mapper=new ObjectMapper();
+                                PartyItem item=new PartyItem();
+                                try {
+                                    obj=mapper.readValue(jsonObject.getString("data"), PartyItem.class);
+                                    item=(PartyItem) obj;
+                                    Log.e("PARTY_LIST","COMPLETED");
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void failure(RetrofitError retrofitError) {
+
+                }
+            });
+        }
+
+
+
+
+
+
+
 
 
         initialize();
@@ -140,7 +181,7 @@ public class DrawerMainActivity extends BaseActivity {
 
     }
 
-    void parsejson(String s) {
+    void GetTokens(String s) {
         Object obj = null;
 
         if(!s.equals("")){
