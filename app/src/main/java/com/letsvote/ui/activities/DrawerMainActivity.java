@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.letsvote.model.PartyItem;
 import com.letsvote.ui.fragment.CandidateListFragment;
 import com.letsvote.ui.fragment.FAQListFragment;
 import com.letsvote.ui.fragment.PartyListFragment;
@@ -34,8 +35,16 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 import com.letsvote.ui.adapters.DrawerList_Adapter;
+import com.letsvote.utility.MySharedPreference;
+import com.letsvote.utility.PreferenceConfig;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DrawerMainActivity extends BaseActivity {
     ActionBarDrawerToggle mDrawerToggle;
@@ -61,15 +70,58 @@ public class DrawerMainActivity extends BaseActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.menu_drawer_main);
 
-        initialize();
-        binddataTOList();
-
-        makeFragmentSelection(0);
-
         RetrofitAPI.getInstance(getApplication()).getService().getToken(APIConfig.api_key, new Callback<String>() {
             @Override
             public void success(String s, Response response) {
                 parsejson(s);
+                Log.e("TOKEN", MySharedPreference.getInstance(DrawerMainActivity.this).getStringPreference(PreferenceConfig.TOKEN, ""));
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                error.printStackTrace();
+            }
+        });
+
+        String token=MySharedPreference.getInstance(DrawerMainActivity.this).getStringPreference(PreferenceConfig.TOKEN, "");
+        RetrofitAPI.getInstance(getApplication()).getService().getPartylist(token, new Callback<String>() {
+            @Override
+            public void success(String s, Response response) {
+
+                if(!s.equals("")){
+                    Object obj = null;
+                    List<PartyItem> PartyItemList=new ArrayList<PartyItem>();
+                    try {
+                        JSONObject listobj=new JSONObject(s);
+
+                        if(!listobj.isNull("data")){
+                            JSONArray listArry=listobj.getJSONArray("data");
+
+                            int i=0;
+                            while(i<listArry.length()){
+                                ObjectMapper mapper=new ObjectMapper();
+                                PartyItem partyItem=new PartyItem();
+
+                                try {
+                                    obj=mapper.readValue(listArry.getString(i), PartyItem.class);
+                                    partyItem=(PartyItem)obj;
+                                    PartyItemList.add(partyItem);
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                                i++;
+                            }
+
+                            Log.e("PARTY_LIST","COMPLETED");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
             }
 
             @Override
@@ -79,17 +131,42 @@ public class DrawerMainActivity extends BaseActivity {
         });
 
 
+        initialize();
+        binddataTOList();
+
+        makeFragmentSelection(0);
+
+
+
+
     }
 
     void parsejson(String s) {
         Object obj = null;
-        try {
+
+        if(!s.equals("")){
+            try {
+                JSONObject apiobj=new JSONObject(s);
+                if(!apiobj.isNull("data")){
+                    JSONObject api_key=apiobj.getJSONObject("data");
+                    if(!api_key.isNull("token")){
+                        String token=api_key.getString("token");
+                        MySharedPreference.getInstance(DrawerMainActivity.this).setStringPreference(PreferenceConfig.TOKEN,token);
+                    }
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        /*try {
             obj = mapper.readValue(s, Object.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
         Log.w("OBJECT", "obj type: " + obj.getClass().toString()); // java.util.LinkedHashMap
-        Log.w("OBJECT", "obj: " + obj);
+        Log.w("OBJECT", "obj: " + obj);*/
     }
 
     @Override
