@@ -21,10 +21,10 @@
         <activity
             android:name=".ui.activities.PolicyActivity"
             android:label="@string/title_activity_policy"
-            android:parentActivityName=".DrawerMainActivity" >
+            android:parentActivityName=".ui.activities.DrawerMainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.letsvote.DrawerMainActivity" />
+                android:value="com.letsvote.ui.activities.DrawerMainActivity" />
         </activity>
         <activity
             android:name=".ui.activities.PartyDetailsActivity"
