@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.letsvote.model.PartyItem;
 import com.letsvote.ui.fragment.CandidateListFragment;
 import com.letsvote.ui.fragment.PartyListFragment;
 import com.letsvote.ui.fragment.PotentialFragment;
@@ -36,10 +37,13 @@ import com.letsvote.ui.adapters.DrawerList_Adapter;
 import com.letsvote.utility.MySharedPreference;
 import com.letsvote.utility.PreferenceConfig;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DrawerMainActivity extends BaseActivity {
     ActionBarDrawerToggle mDrawerToggle;
@@ -77,6 +81,55 @@ public class DrawerMainActivity extends BaseActivity {
                 error.printStackTrace();
             }
         });
+
+        String token=MySharedPreference.getInstance(DrawerMainActivity.this).getStringPreference(PreferenceConfig.TOKEN, "");
+        RetrofitAPI.getInstance(getApplication()).getService().getPartylist(token, new Callback<String>() {
+            @Override
+            public void success(String s, Response response) {
+
+                if(!s.equals("")){
+                    Object obj = null;
+                    List<PartyItem> PartyItemList=new ArrayList<PartyItem>();
+                    try {
+                        JSONObject listobj=new JSONObject(s);
+
+                        if(!listobj.isNull("data")){
+                            JSONArray listArry=listobj.getJSONArray("data");
+
+                            int i=0;
+                            while(i<listArry.length()){
+                                ObjectMapper mapper=new ObjectMapper();
+                                PartyItem partyItem=new PartyItem();
+
+                                try {
+                                    obj=mapper.readValue(listArry.getString(i), PartyItem.class);
+                                    partyItem=(PartyItem)obj;
+                                    PartyItemList.add(partyItem);
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                                i++;
+                            }
+
+                            Log.e("PARTY_LIST","COMPLETED");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                error.printStackTrace();
+            }
+        });
+
+
         initialize();
         binddataTOList();
 
@@ -93,7 +146,7 @@ public class DrawerMainActivity extends BaseActivity {
         if(!s.equals("")){
             try {
                 JSONObject apiobj=new JSONObject(s);
-                if(apiobj.isNull("data")){
+                if(!apiobj.isNull("data")){
                     JSONObject api_key=apiobj.getJSONObject("data");
                     if(!api_key.isNull("token")){
                         String token=api_key.getString("token");
