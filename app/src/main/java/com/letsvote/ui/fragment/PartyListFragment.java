@@ -5,18 +5,33 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.letsvote.R;
+import com.letsvote.api.RetrofitAPI;
 import com.letsvote.model.PartyItem;
 import com.letsvote.ui.activities.PartyDetailsActivity;
 import com.letsvote.ui.activities.PolicyActivity;
 import com.letsvote.ui.adapters.PartyListAdapter;
+import com.letsvote.utility.MySharedPreference;
+import com.letsvote.utility.PreferenceConfig;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by Toe Lie on 9/6/2015.
@@ -30,6 +45,13 @@ public class PartyListFragment extends Fragment {
 
     private PartyListAdapter mPartyListAdapter;
     private RecyclerView mRecyclerView;
+    private List<PartyItem> mPartyItems;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPartyItems = new ArrayList<>();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,9 +70,9 @@ public class PartyListFragment extends Fragment {
 
         ArrayList<PartyItem> itemlist = new ArrayList<>();
 
-        for(int i=0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             PartyItem item = new PartyItem();
-            item.setPartyName("Party " + (i+1));
+            item.setPartyName("Party " + (i + 1));
             itemlist.add(item);
         }
 
@@ -76,11 +98,65 @@ public class PartyListFragment extends Fragment {
             public void onContactClick(String partyId, PartyListAdapter.PartyAdapterViewHolder vh) {
                 Toast.makeText(getActivity(), "Contact" + partyId, Toast.LENGTH_SHORT).show();
             }
-        }, itemlist);
+        }, mPartyItems);
 
         // specify an adapter (see also next example)
         mRecyclerView.setAdapter(mPartyListAdapter);
 
+        fetchPartyList();
         return rootView;
     }
+
+    private void fetchPartyList() {
+        String token = MySharedPreference.getInstance(getActivity()).getStringPreference(PreferenceConfig.TOKEN, "");
+        RetrofitAPI.getInstance(getActivity()).getService().getPartylist(token, new Callback<String>() {
+            @Override
+            public void success(String s, Response response) {
+
+                if (!s.equals("")) {
+                    Object obj = null;
+                    List<PartyItem> PartyItemList = new ArrayList<PartyItem>();
+                    try {
+                        JSONObject listobj = new JSONObject(s);
+
+                        if (!listobj.isNull("data")) {
+                            JSONArray listArry = listobj.getJSONArray("data");
+
+                            int i = 0;
+                            while (i < listArry.length()) {
+                                ObjectMapper mapper = new ObjectMapper();
+                                PartyItem partyItem = new PartyItem();
+
+                                try {
+                                    obj = mapper.readValue(listArry.getString(i), PartyItem.class);
+                                    partyItem = (PartyItem) obj;
+                                    PartyItemList.add(partyItem);
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                                i++;
+                            }
+
+                            mPartyItems = PartyItemList;
+                            mPartyListAdapter.notifyDataSetChanged();
+                            Log.e("PARTY_LIST", "COMPLETED");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                error.printStackTrace();
+            }
+        });
+
+    }
+
 }

@@ -13,14 +13,14 @@ import com.letsvote.R;
 import com.letsvote.model.PartyItem;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Toe Lie on 9/6/2015.
  */
 public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.PartyAdapterViewHolder> {
 
-    private ArrayList<PartyItem> mPartyList;
+    private List<PartyItem> mPartyList;
     final private Context mContext;
     final private PartyAdapterOnClickHandler mClickHandler;
 
@@ -71,7 +71,7 @@ public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.Part
         void onContactClick(String partyId, PartyAdapterViewHolder vh);
     }
 
-    public PartyListAdapter(Context context, PartyAdapterOnClickHandler dh, ArrayList<PartyItem> partyList) {
+    public PartyListAdapter(Context context, PartyAdapterOnClickHandler dh, List<PartyItem> partyList) {
         mContext = context;
         mClickHandler = dh;
         mPartyList = partyList;

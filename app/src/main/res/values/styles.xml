@@ -54,6 +54,23 @@
         <item name="cet_spanSpacing">4dp</item>
     </style>
 
+
+    //faq question style
+    <style name="FaqQuestionTextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/TextAppearance.Medium</item>
+        <item name="android:layout_margin">@dimen/MarginValue.Normal</item>
+        <item name="android:textColor">@color/main_text_color</item>
+    </style>
+
+    //faq answer style
+    <style name="FaqAnswerTextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/TextAppearance.Small</item>
+        <item name="android:layout_margin">@dimen/MarginValue.Normal</item>
+        <item name="android:textColor">@color/main_gray</item>
+    </style>
+
     //Material Library styles
 
     <style name="CardPrimaryTitleStyle">

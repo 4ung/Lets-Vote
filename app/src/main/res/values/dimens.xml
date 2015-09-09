@@ -10,4 +10,12 @@
 
     <dimen name="nav_header_text_margin_left">16dp</dimen>
 
+    <dimen name="TextAppearance.Small">14sp</dimen>
+    <dimen name="TextAppearance.Medium">18sp</dimen>
+    <dimen name="TextAppearance.Large">12sp</dimen>
+
+    <dimen name="MarginValue.Normal">8dp</dimen>
+    <dimen name="MarginValue.Large">16dp</dimen>
+    <dimen name="MarginValue.Double">32dp</dimen>
+
 </resources>

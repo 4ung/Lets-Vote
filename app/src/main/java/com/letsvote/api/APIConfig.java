@@ -37,7 +37,7 @@ public class APIConfig
     public static final String TOKEN_GENERATE="/token/generate";
 
 
-    public static final String PARTY_LIST = "/party/list";
+    public static final String PARTY_LIST = "/party";
     public static final String PARTY_BY_ID = "/party/detail/{party_id}";
 
 
