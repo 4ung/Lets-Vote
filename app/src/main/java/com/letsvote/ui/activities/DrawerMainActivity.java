@@ -33,6 +33,11 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 import com.letsvote.ui.adapters.DrawerList_Adapter;
+import com.letsvote.utility.MySharedPreference;
+import com.letsvote.utility.PreferenceConfig;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -60,15 +65,11 @@ public class DrawerMainActivity extends BaseActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.menu_drawer_main);
 
-        initialize();
-        binddataTOList();
-
-        makeFragmentSelection(0);
-
         RetrofitAPI.getInstance(getApplication()).getService().getToken(APIConfig.api_key, new Callback<String>() {
             @Override
             public void success(String s, Response response) {
                 parsejson(s);
+                Log.e("TOKEN", MySharedPreference.getInstance(DrawerMainActivity.this).getStringPreference(PreferenceConfig.TOKEN, ""));
             }
 
             @Override
@@ -76,19 +77,42 @@ public class DrawerMainActivity extends BaseActivity {
                 error.printStackTrace();
             }
         });
+        initialize();
+        binddataTOList();
+
+        makeFragmentSelection(0);
+
+
 
 
     }
 
     void parsejson(String s) {
         Object obj = null;
-        try {
+
+        if(!s.equals("")){
+            try {
+                JSONObject apiobj=new JSONObject(s);
+                if(apiobj.isNull("data")){
+                    JSONObject api_key=apiobj.getJSONObject("data");
+                    if(!api_key.isNull("token")){
+                        String token=api_key.getString("token");
+                        MySharedPreference.getInstance(DrawerMainActivity.this).setStringPreference(PreferenceConfig.TOKEN,token);
+                    }
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        /*try {
             obj = mapper.readValue(s, Object.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
         Log.w("OBJECT", "obj type: " + obj.getClass().toString()); // java.util.LinkedHashMap
-        Log.w("OBJECT", "obj: " + obj);
+        Log.w("OBJECT", "obj: " + obj);*/
     }
 
     @Override
