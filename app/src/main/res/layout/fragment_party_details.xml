@@ -13,19 +13,22 @@
         style="@style/DetailsLabelStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Party Name"/>
+        android:text="@string/label_party_name"/>
 
     <TextView
+        android:id="@+id/party_details_text_view_party_name"
         style="@style/DetailsValueBoldStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="La Hu National Development Party"/>
+        tools:text="La Hu National Development Party"/>
 
     <TextView
+        android:id="@+id/party_details_text_view_abbreviation"
         style="@style/DetailsValueStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="(LHDP)"/>
+        android:visibility="gone"
+        tools:text="(LHDP)"/>
 
     <include layout="@layout/layout_small_space_party_details"/>
 
@@ -44,13 +47,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/DetailsLabelStyle"
-                android:text="Leadership"/>
+                android:text="@string/label_leadership"/>
 
             <TextView
+                android:id="@+id/party_details_text_view_leader_ship"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/DetailsValueStyle"
-                android:text="U Ye' Tun\nU Khen Yan"/>
+                tools:text="U Ye' Tun\nU Khen Yan"/>
 
         </LinearLayout>
 
@@ -64,13 +68,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/DetailsLabelStyle"
-                android:text="Chairman"/>
+                android:text="@string/label_chairman"/>
 
             <TextView
+                android:id="@+id/party_details_text_view_chairman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/DetailsValueStyle"
-                android:text="U Ye' Tun\nU Khen Yan"/>
+                tools:text="U Ye' Tun\nU Khen Yan"/>
 
         </LinearLayout>
 
@@ -93,13 +98,14 @@
                 style="@style/DetailsLabelStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Establishment Date"/>
+                android:text="@string/label_establishment_date"/>
 
             <TextView
+                android:id="@+id/party_details_text_view_establishment_date"
                 style="@style/DetailsValueStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="29 April 2010"/>
+                tools:text="29 April 2010"/>
 
         </LinearLayout>
 
@@ -113,13 +119,14 @@
                 style="@style/DetailsLabelStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Member Count"/>
+                android:text="@string/label_member_count"/>
 
             <TextView
+                android:id="@+id/party_details_text_view_member_count"
                 style="@style/DetailsValueStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="27"/>
+                tools:text="27"/>
 
         </LinearLayout>
 
@@ -131,13 +138,14 @@
         style="@style/DetailsLabelStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Region"/>
+        android:text="@string/label_region"/>
 
     <TextView
+        android:id="@+id/party_details_text_view_region"
         style="@style/DetailsValueStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="In Shan State"/>
+        tools:text="In Shan State"/>
 
     <include layout="@layout/layout_small_space_party_details"/>
 
@@ -145,13 +153,14 @@
         style="@style/DetailsLabelStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address"/>
+        android:text="@string/label_headquarters"/>
 
     <TextView
+        android:id="@+id/party_details_text_view_headquarters"
         style="@style/DetailsValueStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No.18, North Street, TaungGyi, Shen State"/>
+        tools:text="No.18, North Street, TaungGyi, Shen State"/>
 
     <include layout="@layout/layout_small_space_party_details"/>
 
@@ -159,12 +168,13 @@
         style="@style/DetailsLabelStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contact"/>
+        android:text="@string/label_contact"/>
 
     <TextView
+        android:id="@+id/party_details_text_view_contact"
         style="@style/DetailsValueStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="09-12345678, 01-123456, 067-47895633"/>
+        tools:text="09-12345678, 01-123456, 067-47895633"/>
 
 </LinearLayout>

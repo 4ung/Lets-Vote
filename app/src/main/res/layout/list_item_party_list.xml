@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -21,17 +21,26 @@
             <TextView
                 android:id="@+id/list_item_party_list_text_view_party_name"
                 style="@style/CardPrimaryTitleStyle"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Pao National Organization"/>
 
+            <TextView
+                android:id="@+id/list_item_party_list_text_view_region"
+                style="@style/CardPrimarySubTitleStyle"
+                android:layout_below="@+id/list_item_party_list_text_view_party_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pyi Daung Zu Ta wun lone"/>
+
             <ImageView
+                android:id="@+id/list_item_party_list_image_view_party_flag"
                 style="@style/CardLogoImageStyle"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_height="40dp"
                 android:src="@drawable/sample_logo_2"/>
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

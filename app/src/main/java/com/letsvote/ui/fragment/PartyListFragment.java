@@ -46,8 +46,6 @@ public class PartyListFragment extends Fragment {
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
-
-
         ArrayList<PartyItem> itemlist = new ArrayList<>();
 
         for(int i=0;i<10;i++){
