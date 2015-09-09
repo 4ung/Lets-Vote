@@ -1,6 +1,9 @@
 package com.letsvote.ui.fragment;
 
+import android.content.ContentUris;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +18,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.letsvote.R;
 import com.letsvote.api.RetrofitAPI;
 import com.letsvote.model.PartyItem;
+import com.letsvote.provider.party.PartyContentValues;
+import com.letsvote.provider.party.PartySelection;
 import com.letsvote.ui.activities.PartyDetailsActivity;
 import com.letsvote.ui.activities.PolicyActivity;
 import com.letsvote.ui.adapters.PartyListAdapter;
@@ -161,5 +166,28 @@ public class PartyListFragment extends Fragment {
         });
 
     }
+
+    /**
+     * sample usage of provider generator
+     * @param item
+     */
+    public long addItemToDb(PartyItem item){
+        PartyContentValues values = new PartyContentValues();
+        values.putPartyName(item.getPartyName());
+        values.putPartyNameEnglish(item.getPartyNameEnglish());
+        Uri uri = values.insert(getActivity().getContentResolver());
+        return ContentUris.parseId(uri);
+    }
+
+    /**
+     * sample usage of provider generator
+     * @return
+     * cursor of party list from db
+     */
+    public Cursor queryItemFromDb(){
+        PartySelection selection = new PartySelection();
+        return selection.query(getActivity().getContentResolver());
+    }
+
 
 }

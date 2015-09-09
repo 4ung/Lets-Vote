@@ -1,0 +1,13 @@
+{
+  "syntaxVersion": 3,
+  "projectPackageId": "com.letsvote",
+  "authority": "com.letsvote.provider",
+  "providerJavaPackage": "com.letsvote.provider",
+  "providerClassName": "MyProvider",
+  "sqliteOpenHelperClassName": "MySQLiteOpenHelper",
+  "sqliteOpenHelperCallbacksClassName": "MySQLiteOpenHelperCallbacks",
+  "databaseFileName": "letsvote.db",
+  "databaseVersion": 1,
+  "enableForeignKeys": true,
+  "useAnnotations": true
+}
