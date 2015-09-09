@@ -30,6 +30,19 @@
      Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
      Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
      Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.</string>
+
     <string name="title_activity_party_details">Party Details</string>
+
+    <string name="label_party_name">Party Name</string>
+    <string name="label_leadership">Leadership</string>
+    <string name="label_chairman">Chairman</string>
+    <string name="label_establishment_date">Establishment Date</string>
+    <string name="label_member_count">Member Count</string>
+    <string name="label_region">Region</string>
+    <string name="label_headquarters">Headquarters</string>
+    <string name="label_contact">Contact</string>
+
+    <!-- string format for abbreviation -->
+    <string name="abbreviation_format">(%1$s)</string>
 
 </resources>

@@ -6,19 +6,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.letsvote.R;
 import com.letsvote.model.PartyItem;
+import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Toe Lie on 9/6/2015.
  */
 public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.PartyAdapterViewHolder> {
 
-    private ArrayList<PartyItem> mPartyList;
+    private List<PartyItem> mPartyList;
     final private Context mContext;
     final private PartyAdapterOnClickHandler mClickHandler;
 
@@ -26,13 +28,17 @@ public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.Part
      * Cache of the children views for a party list item.
      */
     public class PartyAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public final ImageView mPartyFlagImageView;
         public final TextView mPartyNameTextView;
+        public final TextView mRegionTextView;
         public final Button mViewPolicyButton;
         public final Button mContactButton;
 
         public PartyAdapterViewHolder(View view) {
             super(view);
+            mPartyFlagImageView = (ImageView) view.findViewById(R.id.list_item_party_list_image_view_party_flag);
             mPartyNameTextView = (TextView) view.findViewById(R.id.list_item_party_list_text_view_party_name);
+            mRegionTextView = (TextView) view.findViewById(R.id.list_item_party_list_text_view_region);
             mViewPolicyButton = (Button) view.findViewById(R.id.list_item_party_list_button_view_policy);
             mContactButton = (Button) view.findViewById(R.id.list_item_party_list_button_contact);
 
@@ -65,7 +71,7 @@ public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.Part
         void onContactClick(String partyId, PartyAdapterViewHolder vh);
     }
 
-    public PartyListAdapter(Context context, PartyAdapterOnClickHandler dh, ArrayList<PartyItem> partyList) {
+    public PartyListAdapter(Context context, PartyAdapterOnClickHandler dh, List<PartyItem> partyList) {
         mContext = context;
         mClickHandler = dh;
         mPartyList = partyList;
@@ -77,7 +83,7 @@ public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.Part
         if ( viewGroup instanceof RecyclerView ) {
 
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item_party_list, viewGroup, false);
-            //view.setFocusable(true);
+            view.setFocusable(true);
 
             return new PartyAdapterViewHolder(view);
 
@@ -88,12 +94,13 @@ public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.Part
 
     @Override
     public void onBindViewHolder(PartyAdapterViewHolder vh, int position) {
-        //partyAdapterViewHolder.mPartyNameTextView.setText("Party#" + position+1);
 
         PartyItem item = mPartyList.get(position);
 
-        vh.mPartyNameTextView.setText(item.getPartyName());
+        Picasso.with(mContext).load(item.getPartyFlag()).into(vh.mPartyFlagImageView);
 
+        vh.mPartyNameTextView.setText(item.getPartyName());
+        vh.mRegionTextView.setText(item.getRegion());
     }
 
     @Override
@@ -101,5 +108,9 @@ public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.Part
         return mPartyList.size();
     }
 
+
+    public void setList(List<PartyItem> list){
+        mPartyList = list;
+    }
 
 }
