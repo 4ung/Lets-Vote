@@ -182,8 +182,9 @@ public class DrawerMainActivity extends BaseActivity {
 
         DrawerMenuList = getResources().getStringArray(R.array.nav_drawer_items);// new String[]{"Candidates","Parties","FAQs", "Geolocations","About"};
         //DrawerIcons=new int[]{R.drawable.ic_calendar, R.drawable.ic_setting,R.drawable.ic_info};
-        DrawerIcons = getResources().getIntArray(R.array.nav_drawer_icons);//new int[]{1,2,3,4,5};
-        DrawerList_Adapter drawerList_adapter = new DrawerList_Adapter(this, DrawerMenuList, DrawerIcons);
+
+        DrawerIcons=new int[]{R.drawable.ic_candidate,R.drawable.ic_party,R.drawable.ic_faq,R.drawable.ic_partyocations,R.drawable.ic_info};
+        DrawerList_Adapter drawerList_adapter=new DrawerList_Adapter(this,DrawerMenuList,DrawerIcons);
         drawerList_adapter.notifyDataSetChanged();
         mDrawerList.setAdapter(drawerList_adapter);
         mDrawerList.setOnItemClickListener(new DrawerListItemClickListener());

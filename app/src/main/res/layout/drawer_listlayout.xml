@@ -16,7 +16,7 @@
         <RelativeLayout
             android:id="@+id/ly1"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@color/main_color"
@@ -81,15 +81,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+<<<<<<< HEAD
 
                 <TextView
+=======
+               <!-- <TextView
+                    android:background="@android:color/darker_gray"
+>>>>>>> 9e8cbd710f4f3f7aaea9c385436d5343d5587c7d
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:height="2sp"
                     android:background="@android:color/darker_gray">
 
+<<<<<<< HEAD
                 </TextView>
 
+=======
+                </TextView>-->
+>>>>>>> 9e8cbd710f4f3f7aaea9c385436d5343d5587c7d
                 <ListView
                     android:id="@+id/left_drawer_lv"
                     android:layout_width="match_parent"
