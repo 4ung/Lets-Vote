@@ -1,11 +1,11 @@
 package com.letsvote.ui.activities;
 
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,6 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.letsvote.ui.fragment.CandidateListFragment;
+import com.letsvote.ui.fragment.PartyListFragment;
+import com.letsvote.ui.fragment.PotentialFragment;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.letsvote.R;
@@ -31,8 +34,6 @@ import retrofit.client.Response;
 
 import com.letsvote.ui.adapters.DrawerList_Adapter;
 
-
-
 import java.io.IOException;
 
 public class DrawerMainActivity extends BaseActivity {
@@ -45,17 +46,18 @@ public class DrawerMainActivity extends BaseActivity {
     String[] DrawerMenuList;
     int[] DrawerIcons;
 
-    static ObjectMapper mapper=new ObjectMapper();
+    static ObjectMapper mapper = new ObjectMapper();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_main);
 
-        mDrawerList=(ListView) findViewById(R.id.left_drawer_lv);
-        mDrawerListLayout=(LinearLayout) findViewById(R.id.left_drawer);
-        mDrawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer_lv);
+        mDrawerListLayout = (LinearLayout) findViewById(R.id.left_drawer);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.menu_drawer_main);
 
         initialize();
@@ -78,15 +80,15 @@ public class DrawerMainActivity extends BaseActivity {
 
     }
 
-    void parsejson(String s){
+    void parsejson(String s) {
         Object obj = null;
         try {
             obj = mapper.readValue(s, Object.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.w("OBJECT","obj type: " + obj.getClass().toString()); // java.util.LinkedHashMap
-        Log.w("OBJECT","obj: " + obj);
+        Log.w("OBJECT", "obj type: " + obj.getClass().toString()); // java.util.LinkedHashMap
+        Log.w("OBJECT", "obj: " + obj);
     }
 
     @Override
@@ -104,7 +106,7 @@ public class DrawerMainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void initialize(){
+    private void initialize() {
 
 
         toolbar.setTitle(getResources().getString(R.string.app_name));
@@ -135,7 +137,7 @@ public class DrawerMainActivity extends BaseActivity {
 
     }
 
-    protected class ToolbarMenuclickListener implements Toolbar.OnMenuItemClickListener{
+    protected class ToolbarMenuclickListener implements Toolbar.OnMenuItemClickListener {
 
         @Override
         public boolean onMenuItemClick(MenuItem item) {
@@ -143,21 +145,21 @@ public class DrawerMainActivity extends BaseActivity {
         }
     }
 
-    void makeFragmentSelection(int position){
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        switch (position){
+    void makeFragmentSelection(int position) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        switch (position) {
             case 0:
                 toolbar.setTitle(DrawerMenuList[position]);
-                //fragmentManager.beginTransaction().replace(R.id.content_frame, new Fragment_Diy_container()).commit();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, new PotentialFragment()).commit();
                 break;
             case 1:
                 toolbar.setTitle(DrawerMenuList[position]);
-                // fragmentManager.beginTransaction().replace(R.id.content_frame, new Fragment_setting()).commit();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, new PartyListFragment()).commit();
                 break;
             case 2:
                 //Do action here
                 toolbar.setTitle(DrawerMenuList[position]);
-                //fragmentManager.beginTransaction().replace(R.id.content_frame, new Fragment_vocablist()).commit();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, new CandidateListFragment()).commit();
                 break;
             case 3:
                 //Do action here
@@ -176,11 +178,12 @@ public class DrawerMainActivity extends BaseActivity {
 
     }
 
-    void binddataTOList(){
-        DrawerMenuList=new String[]{"Candidates","Parties","FAQs", "Geolocations","About"};
+    void binddataTOList() {
+
+        DrawerMenuList = getResources().getStringArray(R.array.nav_drawer_items);// new String[]{"Candidates","Parties","FAQs", "Geolocations","About"};
         //DrawerIcons=new int[]{R.drawable.ic_calendar, R.drawable.ic_setting,R.drawable.ic_info};
-        DrawerIcons=new int[]{1,2,3,4,5};
-        DrawerList_Adapter drawerList_adapter=new DrawerList_Adapter(this,DrawerMenuList,DrawerIcons);
+        DrawerIcons = getResources().getIntArray(R.array.nav_drawer_icons);//new int[]{1,2,3,4,5};
+        DrawerList_Adapter drawerList_adapter = new DrawerList_Adapter(this, DrawerMenuList, DrawerIcons);
         drawerList_adapter.notifyDataSetChanged();
         mDrawerList.setAdapter(drawerList_adapter);
         mDrawerList.setOnItemClickListener(new DrawerListItemClickListener());
@@ -188,7 +191,7 @@ public class DrawerMainActivity extends BaseActivity {
 
     }
 
-    protected class DrawerListItemClickListener implements AdapterView.OnItemClickListener{
+    protected class DrawerListItemClickListener implements AdapterView.OnItemClickListener {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

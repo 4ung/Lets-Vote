@@ -4,7 +4,32 @@
     <string name="app_name">Lets Vote</string>
     <string name="open_drawer">open</string>
     <string name="close_drawer">close</string>
+    <string name="view_policy">View Policy</string>
+    <string name="title_activity_policy">Policies</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="contact">Contact</string>
 
-
+    <!-- TODO: delete -->
+    <string name="sample_policies_text">Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.\n\n
+     Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies. Sample Policies.</string>
+    <string name="title_activity_party_details">Party Details</string>
 
 </resources>

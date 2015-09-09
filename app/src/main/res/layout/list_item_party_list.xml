@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/listPreferredItemPaddingRight"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/list_item_party_list_text_view_party_name"
+                style="@style/CardPrimaryTitleStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pao National Organization"/>
+
+            <ImageView
+                style="@style/CardLogoImageStyle"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/sample_logo_2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <Button
+            android:id="@+id/list_item_party_list_button_view_policy"
+            style="@style/CardButtonStyle"
+            android:text="@string/view_policy"/>
+            <Button
+                android:id="@+id/list_item_party_list_button_contact"
+                style="@style/CardButtonStyle"
+                android:text="@string/contact"/>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
