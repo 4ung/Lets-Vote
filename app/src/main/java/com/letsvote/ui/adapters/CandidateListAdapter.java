@@ -9,30 +9,30 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.letsvote.R;
-import com.letsvote.model.PartyItem;
+import com.letsvote.model.CandidateItem;
 
 import java.util.ArrayList;
 
 /**
- * Created by Toe Lie on 9/6/2015.
+ * Created by Admin on 9/9/15.
  */
-public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.PartyAdapterViewHolder> {
+public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdapter.CandidateAdapterViewHolder> {
 
-    private ArrayList<PartyItem> mPartyList;
+    private ArrayList<CandidateItem> mCandidateList;
     final private Context mContext;
-    final private PartyAdapterOnClickHandler mClickHandler;
+    final private CandidateAdapterOnClickHandler mClickHandler;
 
     /**
      * Cache of the children views for a party list item.
      */
-    public class PartyAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public final TextView mPartyNameTextView;
+    public class CandidateAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public final TextView mCandidateNameTextView;
         public final Button mViewPolicyButton;
         public final Button mContactButton;
 
-        public PartyAdapterViewHolder(View view) {
+        public CandidateAdapterViewHolder(View view) {
             super(view);
-            mPartyNameTextView = (TextView) view.findViewById(R.id.list_item_party_list_text_view_party_name);
+            mCandidateNameTextView = (TextView) view.findViewById(R.id.list_item_party_list_text_view_party_name);
             mViewPolicyButton = (Button) view.findViewById(R.id.list_item_party_list_button_view_policy);
             mContactButton = (Button) view.findViewById(R.id.list_item_party_list_button_contact);
 
@@ -45,41 +45,41 @@ public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.Part
         public void onClick(View v) {
 
             int adapterPosition = getAdapterPosition();
-            PartyItem partyItem = mPartyList.get(adapterPosition);
+            CandidateItem item = mCandidateList.get(adapterPosition);
 
             if(v instanceof Button) {
                 if(v.getId() == R.id.list_item_party_list_button_view_policy) {
-                    mClickHandler.onViewPolicyClick(partyItem.getId(), this);
+                    mClickHandler.onViewPolicyClick(item.getId(), this);
                 }else if(v.getId() == R.id.list_item_party_list_button_contact){
-                    mClickHandler.onContactClick(partyItem.getId(), this);
+                    mClickHandler.onContactClick(item.getId(), this);
                 }
             }else {
-                mClickHandler.onClick(partyItem.getId(), this);
+                mClickHandler.onClick(item.getId(), this);
             }
         }
     }
 
-    public static interface PartyAdapterOnClickHandler {
-        void onClick(String partyId, PartyAdapterViewHolder vh);
-        void onViewPolicyClick(String partyId, PartyAdapterViewHolder vh);
-        void onContactClick(String partyId, PartyAdapterViewHolder vh);
+
+    public static interface CandidateAdapterOnClickHandler {
+        void onClick(String partyId, CandidateAdapterViewHolder vh);
+        void onViewPolicyClick(String partyId, CandidateAdapterViewHolder vh);
+        void onContactClick(String partyId, CandidateAdapterViewHolder vh);
     }
 
-    public PartyListAdapter(Context context, PartyAdapterOnClickHandler dh, ArrayList<PartyItem> partyList) {
+    public CandidateListAdapter(Context context, CandidateAdapterOnClickHandler dh, ArrayList<CandidateItem> candidatelist) {
         mContext = context;
         mClickHandler = dh;
-        mPartyList = partyList;
+        mCandidateList = candidatelist;
     }
 
 
     @Override
-    public PartyAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public CandidateAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         if ( viewGroup instanceof RecyclerView ) {
 
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item_party_list, viewGroup, false);
             //view.setFocusable(true);
-
-            return new PartyAdapterViewHolder(view);
+            return new CandidateAdapterViewHolder(view);
 
         } else {
             throw new RuntimeException("Not bound to RecyclerView");
@@ -87,19 +87,15 @@ public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.Part
     }
 
     @Override
-    public void onBindViewHolder(PartyAdapterViewHolder vh, int position) {
+    public void onBindViewHolder(CandidateAdapterViewHolder vh, int position) {
         //partyAdapterViewHolder.mPartyNameTextView.setText("Party#" + position+1);
-
-        PartyItem item = mPartyList.get(position);
-
-        vh.mPartyNameTextView.setText(item.getPartyName());
-
+        CandidateItem item = mCandidateList.get(position);
+        vh.mCandidateNameTextView.setText(item.getName());
     }
 
     @Override
     public int getItemCount() {
-        return mPartyList.size();
+        return mCandidateList.size();
     }
-
 
 }

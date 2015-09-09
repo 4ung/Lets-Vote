@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.letsvote.R;
+import com.letsvote.model.PartyItem;
 import com.letsvote.ui.activities.PartyDetailsActivity;
 import com.letsvote.ui.activities.PolicyActivity;
 import com.letsvote.ui.adapters.PartyListAdapter;
@@ -45,15 +46,16 @@ public class PartyListFragment extends Fragment {
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
-        // populate mock data
-        ArrayList<String> dataSet = new ArrayList<>();
-        dataSet.add("");
-        dataSet.add("");
-        dataSet.add("");
-        dataSet.add("");
-        dataSet.add("");
-        dataSet.add("");
-        dataSet.add("");
+
+
+        ArrayList<PartyItem> itemlist = new ArrayList<>();
+
+        for(int i=0;i<10;i++){
+            PartyItem item = new PartyItem();
+            item.setPartyName("Party " + (i+1));
+            itemlist.add(item);
+        }
+
 
         // The PartyListAdapter will take data from a source and
         // use it to populate the RecyclerView it's attached to.
@@ -76,7 +78,7 @@ public class PartyListFragment extends Fragment {
             public void onContactClick(String partyId, PartyListAdapter.PartyAdapterViewHolder vh) {
                 Toast.makeText(getActivity(), "Contact" + partyId, Toast.LENGTH_SHORT).show();
             }
-        }, dataSet);
+        }, itemlist);
 
         // specify an adapter (see also next example)
         mRecyclerView.setAdapter(mPartyListAdapter);
