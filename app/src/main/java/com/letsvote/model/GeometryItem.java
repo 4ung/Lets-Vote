@@ -1,6 +1,5 @@
 package com.letsvote.model;
 
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -8,84 +7,66 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+/**
+ * Created by Hein Htet on 9/8/15.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "flat",
-        "seal",
-        "policy"
+        "type",
+        "coordinates"
 })
-public class FileItem {
+public class GeometryItem {
 
-    @JsonProperty("flat")
-    private String flat;
-    @JsonProperty("seal")
-    private String seal;
-    @JsonProperty("policy")
-    private String policy;
+    @JsonProperty("type")
+    private String type;
+    @JsonProperty("coordinates")
+    private List<List<List<Double>>> coordinates = new ArrayList<List<List<Double>>>();
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      *
      * @return
-     * The flat
+     * The type
      */
-    @JsonProperty("flat")
-    public String getFlat() {
-        return flat;
+    @JsonProperty("type")
+    public String getType() {
+        return type;
     }
 
     /**
      *
-     * @param flat
-     * The flat
+     * @param type
+     * The type
      */
-    @JsonProperty("flat")
-    public void setFlat(String flat) {
-        this.flat = flat;
-    }
-
-    /**
-     *
-     * @return
-     * The seal
-     */
-    @JsonProperty("seal")
-    public String getSeal() {
-        return seal;
-    }
-
-    /**
-     *
-     * @param seal
-     * The seal
-     */
-    @JsonProperty("seal")
-    public void setSeal(String seal) {
-        this.seal = seal;
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
     }
 
     /**
      *
      * @return
-     * The policy
+     * The coordinates
      */
-    @JsonProperty("policy")
-    public String getPolicy() {
-        return policy;
+    @JsonProperty("coordinates")
+    public List<List<List<Double>>> getCoordinates() {
+        return coordinates;
     }
 
     /**
      *
-     * @param policy
-     * The policy
+     * @param coordinates
+     * The coordinates
      */
-    @JsonProperty("policy")
-    public void setPolicy(String policy) {
-        this.policy = policy;
+    @JsonProperty("coordinates")
+    public void setCoordinates(List<List<List<Double>>> coordinates) {
+        this.coordinates = coordinates;
     }
 
     @JsonAnyGetter
@@ -99,3 +80,4 @@ public class FileItem {
     }
 
 }
+

@@ -74,6 +74,8 @@ public class DrawerMainActivity extends BaseActivity {
                 error.printStackTrace();
             }
         });
+
+
     }
 
     void parsejson(String s){
