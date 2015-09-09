@@ -18,6 +18,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.letsvote.ui.fragment.CandidateListFragment;
+import com.letsvote.ui.fragment.FAQListFragment;
 import com.letsvote.ui.fragment.PartyListFragment;
 import com.letsvote.ui.fragment.PotentialFragment;
 
@@ -169,7 +170,7 @@ public class DrawerMainActivity extends BaseActivity {
             case 4:
                 //Do action here
                 toolbar.setTitle(DrawerMenuList[position]);
-                //fragmentManager.beginTransaction().replace(R.id.content_frame,new Fragment_About()).commit();
+                fragmentManager.beginTransaction().replace(R.id.content_frame,new FAQListFragment()).commit();
                 break;
         }
         mDrawerList.setItemChecked(position, true);
