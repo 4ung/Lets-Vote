@@ -177,7 +177,7 @@ public class DrawerMainActivity extends BaseActivity {
     void binddataTOList(){
         DrawerMenuList=new String[]{"Candidates","Parties","FAQs", "Geolocations","About"};
         //DrawerIcons=new int[]{R.drawable.ic_calendar, R.drawable.ic_setting,R.drawable.ic_info};
-        DrawerIcons=new int[]{1,2,3,4,5};
+        DrawerIcons=new int[]{R.drawable.ic_candidate,R.drawable.ic_party,R.drawable.ic_faq,R.drawable.ic_partyocations,R.drawable.ic_info};
         DrawerList_Adapter drawerList_adapter=new DrawerList_Adapter(this,DrawerMenuList,DrawerIcons);
         drawerList_adapter.notifyDataSetChanged();
         mDrawerList.setAdapter(drawerList_adapter);

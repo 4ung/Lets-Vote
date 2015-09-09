@@ -44,7 +44,11 @@ public class DrawerList_Adapter extends BaseAdapter {
 
 
         vh.tv_itemtext.setText(listitem[position]);
-       // vh.iv_icon.setImageResource(listicon[position]);
+        try {
+            vh.iv_icon.setImageResource(listicon[position]);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
         return convertView;
