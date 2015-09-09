@@ -3,7 +3,7 @@
     <!--TODO:// fix string items-->
     <string-array name="nav_drawer_items">
         <item>Potential</item>
-        <item>Party List</item>
+        <item>ပါတီစာရင်း</item>
         <item>Candidate List</item>
         <item>Something</item>
         <item>FAQ</item>
