@@ -103,11 +103,12 @@ public class PartyListFragment extends Fragment {
         // specify an adapter (see also next example)
         mRecyclerView.setAdapter(mPartyListAdapter);
 
-        fetchPartyList();
+       // fetchPartyList();
         return rootView;
     }
 
     private void fetchPartyList() {
+
         String token = MySharedPreference.getInstance(getActivity()).getStringPreference(PreferenceConfig.TOKEN, "");
         RetrofitAPI.getInstance(getActivity()).getService().getPartylist(token, new Callback<String>() {
             @Override
@@ -139,7 +140,8 @@ public class PartyListFragment extends Fragment {
                                 i++;
                             }
 
-                            mPartyItems = PartyItemList;
+                            mPartyListAdapter = (PartyListAdapter) mRecyclerView.getAdapter();
+                            mPartyListAdapter.setList(PartyItemList);
                             mPartyListAdapter.notifyDataSetChanged();
                             Log.e("PARTY_LIST", "COMPLETED");
                         }

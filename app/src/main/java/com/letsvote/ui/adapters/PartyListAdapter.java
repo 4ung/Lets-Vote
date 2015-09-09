@@ -109,4 +109,8 @@ public class PartyListAdapter extends RecyclerView.Adapter<PartyListAdapter.Part
     }
 
 
+    public void setList(List<PartyItem> list){
+        mPartyList = list;
+    }
+
 }
