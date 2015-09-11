@@ -153,6 +153,7 @@ public class DrawerMainActivity extends BaseActivity {
                                 PartyItem item=new PartyItem();
                                 try {
                                     obj=mapper.readValue(jsonObject.getString("data"), PartyItem.class);
+
                                     item=(PartyItem) obj;
                                     Log.e("PARTY_LIST","COMPLETED");
                                 } catch (IOException e) {
