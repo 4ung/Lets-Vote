@@ -34,6 +34,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.letsvote.ui.activities.DrawerMainActivity" />
         </activity>
+
+
+        <provider
+            android:name="com.letsvote.provider.MyProvider"
+            android:authorities="com.letsvote.provider"
+            android:exported="false" />
     </application>
 
 </manifest>
